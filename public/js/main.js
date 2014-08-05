@@ -40,7 +40,7 @@ function update3dTweet (input) {
 			ENVpath,
 			AUTHpath,
 			LOCALpath = 'http://localhost:3000/',
-			LIVEpath = 'http://www.sadtweets.com/',
+			LIVEpath = 'http://physical-tweets.herokuapp.com/',
 			tweetsTemplate,
 			shownTweets = [],
 			notShownTweets = [],
