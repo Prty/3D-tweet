@@ -65,19 +65,25 @@
 
 		var methods = {
 			init: function () {
-				console.log('Sad Tweets js init!');
+				console.log('Physical Tweets js init!');
 				twitterhandle = $('.ejs-context').html();
-				methods.showIntroSadTweets();
+				// methods.showIntroSadTweets();
 
-				var source = $('#tweets-template').html();
-				tweetsTemplate = Handlebars.compile( source );
+				// var source = $('#tweets-template').html();
+				// tweetsTemplate = Handlebars.compile( source );
 
-				var source = $('#tweets-share-template').html();
-				tweetsShareTemplate = Handlebars.compile( source );
+				// var source = $('#tweets-share-template').html();
+				// tweetsShareTemplate = Handlebars.compile( source );
 
 				if (parsedURL.length > 0) {
 					methods.getSadTweets('url', twitterhandle);	
 				}
+
+				$('.get-tweets').on('click', function (e) {
+					e.preventDefault();
+					console.log('get-tweets-button!');
+					window.location.href = AUTHpath + "auth/twitter";
+				});
 
 				// Init getSadTweets input form event handler
 				$('.get-sadtweets-button').on('click', function (e) {
@@ -317,5 +323,5 @@
 				$.ajax(params);
 			} // end of getSadTweets
 		}// end of method
-		window.SadTweets = methods;
+		window.physicalTweets = methods;
 })();

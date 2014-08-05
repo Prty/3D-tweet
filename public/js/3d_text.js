@@ -11,10 +11,10 @@ var group, textMesh1, textMesh2, textGeo, material;
 
 var firstLetter = true;
 
-var text = "three.js",
+var text = "3D Tweets",
 
 	height = 20,
-	size = 70,
+	size = 50,
 	hover = 30,
 
 	curveSegments = 4,
@@ -31,20 +31,16 @@ var text = "three.js",
 var mirror = true;
 
 var fontMap = {
-
 	"helvetiker": 0,
 	"optimer": 1,
 	"gentilis": 2,
 	"droid sans": 3,
 	"droid serif": 4
-
 };
 
 var weightMap = {
-
 	"normal": 0,
 	"bold": 1
-
 };
 
 var reverseFontMap = {};
