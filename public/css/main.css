@@ -20,3 +20,6 @@ body {
 	underline; 
 	cursor: pointer 
 }
+.ejs-context {
+	display: none;
+}

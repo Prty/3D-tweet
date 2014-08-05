@@ -11,10 +11,10 @@ var group, textMesh1, textMesh2, textGeo, material;
 
 var firstLetter = true;
 
-var text = "3D Tweets",
+var text = "Sad Tweets",
 
 	height = 20,
-	size = 50,
+	size = 20,
 	hover = 30,
 
 	curveSegments = 4,

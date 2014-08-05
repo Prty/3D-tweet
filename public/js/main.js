@@ -1,3 +1,29 @@
+console.log('main.js!');
+var randTweet;
+
+var tweetArray = [
+	'first cool tweet!',
+	'visual tweet',
+	'such cool tweet',
+	'3d tweet',
+	'wow tweet',
+	'such hashtag',
+	'@wow',
+	'cool nice'
+];
+
+function update3dTweet (input) {
+
+	if (input) {
+		text = input;
+	} else {
+		randTweet = tweetArray[Math.floor(Math.random() * tweetArray.length)];
+		text = randTweet;
+	}
+	refreshText();
+}
+
+
 (function () {
 
 		Object.size = function(obj) {
@@ -26,26 +52,6 @@
 		//					//
 		//	THREEJS TWEETS	//
 		//					//
-
-		console.log('main.js!');
-		var randTweet;
-
-		var tweetArray = [
-			'first cool tweet!',
-			'visual tweet',
-			'such cool tweet',
-			'3d tweet',
-			'wow tweet',
-			'such hashtag',
-			'@wow',
-			'cool nice'
-		];
-
-		function getRandTweet () {
-			randTweet = tweetArray[Math.floor(Math.random() * tweetArray.length)];
-			text = randTweet;
-			refreshText();
-		}
 
 		$('.create-tweet').on('click', function () {
 			getRandTweet();
@@ -76,6 +82,7 @@
 				// tweetsShareTemplate = Handlebars.compile( source );
 
 				if (parsedURL.length > 0) {
+					// alert('getSadTweets!');
 					methods.getSadTweets('url', twitterhandle);	
 				}
 
@@ -95,7 +102,6 @@
 					//////////////////////////
 					//	TWITTER FORM INPUT  //
 					//////////////////////////
-
 
 					// if ($('.twitter-form-input').val().length -1 > 0) {
 					// 	$(this).fadeOut(function () {
@@ -252,8 +258,8 @@
 							// HANDLE BAR SUCCESS ACTIONS //
 							////////////////////////////////
 
-							tweetContainer = $('.tweets-container');
-							tweetContainer.empty();
+							// tweetContainer = $('.tweets-container');
+							// tweetContainer.empty();
 
 							$.each(data, function (idx, obj) {
 								var tweet = {
@@ -273,15 +279,41 @@
 
 								notShownTweets.push(obj.id);
 								// console.log(obj.text);
-								var html = tweetsTemplate(tweet);
-								tweetContainer.append(html);
+								// var html = tweetsTemplate(tweet);
+								// tweetContainer.append(html);
 							});
 							console.log('Not shown Tweets!');
 							console.log(notShownTweets);
 
 							history.pushState(null, null, twitterhandle);
-							methods.showSadTweets(context);
+							// methods.showSadTweets(context);
 							// 	console.log(html);
+
+							var textFromTweet;
+
+							console.log('textFromTweet: ' + textFromTweet);
+							
+
+							dataObjectCount = 0;
+							for (var key in data) {
+								if (data.hasOwnProperty(key)) {
+									if (dataObjectCount === 0) {
+										// alert(key + " -> " + data[key]);
+										textFromTweet = data[key].text;
+										update3dTweet(textFromTweet);
+
+										dataObjectCount++;
+									} else {
+										alert('anothertweet');
+									}
+								  
+								}
+								
+			
+							}
+
+							// data[Object.keys(data)[0].text];
+
 								
 							// } // end of for loop
 						} else {
@@ -298,11 +330,11 @@
 
 				if (context === 'url') {
 					params.url = ENVpath + twitterhandle_url
-					var html = tweetsShareTemplate(parsedURL);
+					// var html = tweetsShareTemplate(parsedURL);
 
-					var html = tweetsShareTemplate(parsedURL);
-					tweetShareContainer = $('.tweets-share-container');
-					tweetShareContainer.append(html);
+					// var html = tweetsShareTemplate(parsedURL);
+					// tweetShareContainer = $('.tweets-share-container');
+					// tweetShareContainer.append(html);
 
 				} else if (context === 'input') {
 					// fetch data from input form
