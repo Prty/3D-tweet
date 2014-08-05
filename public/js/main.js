@@ -304,7 +304,7 @@ function update3dTweet (input) {
 
 										dataObjectCount++;
 									} else {
-										alert('anothertweet');
+										// alert('anothertweet');
 									}
 								  
 								}
