@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 	<head>
-		<title>three.js webgl - geometry - text</title>
+		<title>3D TWEETS</title>
 		<meta charset="utf-8">
 		<meta name="viewport" content="width=device-width, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
 		<link rel="stylesheet" href="css/main.css"/>
@@ -23,9 +23,15 @@
 			<a id="permalink" href="#">permalink</a>
 		</div>
 
+		<!--			-->
+		<!--	LIBS 	-->
+		<!--			-->
 
 		<script src="js/libs/three.min.js"></script>
 		<script type="text/javascript" src="js/libs/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/libs/jquery-2.1.1.min.js"></script>
+		<script type="text/javascript" src="js/libs/handlebars.js"></script>
+		<script type="text/javascript" src="js/libs/jquery.transit.min.js"></script>
 
 		<script src="js/shaders/ConvolutionShader.js"></script>
 		<script src="js/shaders/CopyShader.js"></script>
@@ -58,8 +64,11 @@
 		<!--	 -->
 		<!-- APP -->
 		<!-- 	 -->
+
 		<script type="text/javascript" src="js/3d_text.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
-
+		<script type="text/javascript">
+			window.3Dtweets.init();
+		</script>
 	</body>
 </html>
