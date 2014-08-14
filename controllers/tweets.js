@@ -1,12 +1,14 @@
 /////////////
 // REQUIRE //
 /////////////
+console.log('tweets.js!');
 
-var express = require('express'),
-	router  = express.Router(),
-	util    = require('util'),
-	moment = require('moment'),
-	Twit    = require('twit'),
+var express			= require('express'),
+	router			= express.Router(),
+	util			= require('util'),
+	moment			= require('moment'),
+	Twit 	  		= require('twit'),
+	nTwitter		= require('node-twitter'),
 	TwitterStrategy = require('passport-twitter').Strategy;
 	
 
@@ -17,8 +19,9 @@ var configAuth = require('../config/auth');
 ///////////////////////
 
 exports.show = function(req, res) {
+	console.log(req.params);
 	console.log('req.user.twitter.username: ' + req.user.twitter.username)
-	
+
 	var T = new Twit({
 	    consumer_key:         configAuth.twitterAuth.consumerKey
 	  , consumer_secret:      configAuth.twitterAuth.consumerSecret
@@ -139,6 +142,10 @@ exports.show = function(req, res) {
 		});
 	}
 
+	////////////////////////
+	// PARSE TWTITER DATA //
+	////////////////////////
+
 	function parseTwitterDate(text) {
 		//running regex to grab everything after the time
 		var newtext = text.replace(/(\d{1,2}[:]\d{2}[:]\d{2}) (.*)/, '$2 $1');
@@ -154,3 +161,34 @@ exports.show = function(req, res) {
 	// TWITTER API CALL
 	// res.json({hello: 'world', tweets: [{}]req.params.username});
 };
+
+///////////////////////////
+// POST TWEET WITH IMAGE //
+///////////////////////////
+
+exports.post = function (req, res) {
+	console.log('req.user.twitter.username: ' + req.user.twitter.username)
+
+	var twitterRestClient = new Twitter.RestClient({
+		consumer_key:         configAuth.twitterAuth.consumerKey
+	,	consumer_secret:      configAuth.twitterAuth.consumerSecret
+	,	access_token:         req.user.twitter.token
+	,	access_token_secret:  req.user.twitter.secretToken
+	});
+
+	twitterRestClient.statusesUpdateWithMedia(
+		{
+			'status': 'Posting a tweet w/ attached media.',
+			'media[]': '/images-created/tweet_1.png'
+		},
+		function (error, result) {
+			if (error) {
+				console.log('Error: ' + (error.code ? error.code + ' ' + error.message : error.message));
+			}
+
+			if (result) {
+				console.log(result);
+			}
+		}
+	);
+}

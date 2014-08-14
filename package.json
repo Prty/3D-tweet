@@ -17,6 +17,7 @@
     "moment": "^2.8.1",
     "mongoose": "^3.8.14",
     "morgan": "~1.0.0",
+    "node-twitter": "^0.5.2",
     "passport": "~0.1.17",
     "passport-twitter": "^1.0.2",
     "pkginfo": "^0.3.0",

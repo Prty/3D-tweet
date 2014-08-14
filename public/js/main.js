@@ -92,6 +92,12 @@ function update3dTweet (input) {
 					window.location.href = AUTHpath + "auth/twitter";
 				});
 
+				$('.post-tweet').on('click', function (e) {
+					e.preventDefault();
+					console.log('post-tweet!');
+					//window.location.href = AUTHpath + "auth/twitter";
+				});
+
 				// Init getSadTweets input form event handler
 				$('.get-sadtweets-button').on('click', function (e) {
 					e.preventDefault();
