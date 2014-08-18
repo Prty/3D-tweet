@@ -13,7 +13,6 @@ var tweetArray = [
 ];
 
 function update3dTweet (input) {
-
 	if (input) {
 		text = input;
 	} else {
@@ -96,6 +95,15 @@ function update3dTweet (input) {
 					e.preventDefault();
 					console.log('post-tweet!');
 					//window.location.href = AUTHpath + "auth/twitter";
+				});
+
+				$('.update-svg').on('click', function (e) {
+					e.preventDefault();
+					console.log('update-svg!');
+					var text = $('.main-text-svg');
+					var text = text[0].childNodes[1].innerHTML = 'new text';
+					console.log(text);
+					// text.attr({ text: 'my new text'});
 				});
 
 				// Init getSadTweets input form event handler
@@ -359,7 +367,18 @@ function update3dTweet (input) {
 				///////////////
 
 				$.ajax(params);
-			} // end of getSadTweets
+			}, // end of getSadTweets
+			clearSVGtext: function () {
+				console.log('clearSVGtext!');
+				// console.log(text);
+				// console.log(svgText);
+				$('.main-text-svg')[0].childNodes[1].innerHTML = '';
+				
+			},
+			createSVGtext: function () {
+				console.log('createSVGtext!');
+				$('.main-text-svg')[0].childNodes[1].innerHTML = text;
+			}
 		}// end of method
-		window.physicalTweets = methods;
+		window.TweetChain = methods;
 })();

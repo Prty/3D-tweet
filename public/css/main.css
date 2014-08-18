@@ -1,6 +1,6 @@
-body {
+body, html {
 	font-family: Monospace;
-	background-color: #000;
+	background-color: white;
 	color: #fff;
 	margin: 0px;
 	overflow: hidden;
@@ -13,6 +13,9 @@ body {
 	z-index: 100;
 	display:block;
 }
+#info-index {
+	display: none;
+}
 #info a, .button { 
 	color: #f00; 
 	font-weight: bold; 
@@ -22,4 +25,21 @@ body {
 }
 .ejs-context {
 	display: none;
+}
+
+/*	   */
+/* SVG */
+/* 	   */
+
+.svg {
+	background: cyan;
+	position: absolute;
+	width: 300px;
+	margin: 200px auto;
+	left: 0;
+	right: 0;
+	display: none;
+}
+.svg .main-svg-text {
+	text-align: center;
 }

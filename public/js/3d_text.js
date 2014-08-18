@@ -1,17 +1,13 @@
 if ( ! Detector.webgl ) Detector.addGetWebGLMessage();
 
 var container, stats, permalink, hex, color;
-
 var camera, cameraTarget, scene, renderer;
-
 var composer;
 var effectFXAA;
-
 var group, textMesh1, textMesh2, textGeo, material;
-
 var firstLetter = true;
 
-var text = "Sad Tweets",
+var text = "Tweet Chain",
 
 	height = 20,
 	size = 20,
@@ -75,7 +71,7 @@ function decimalToHex( d ) {
 	var hex = Number( d ).toString( 16 );
 	hex = "000000".substr( 0, 6 - hex.length ) + hex;
 	return hex.toUpperCase();
-
+	console.log(hex);
 }
 
 function init() {
@@ -95,7 +91,7 @@ function init() {
 	// SCENE
 
 	scene = new THREE.Scene();
-	scene.fog = new THREE.Fog( 0x000000, 250, 1400 );
+	scene.fog = new THREE.Fog( 0xffffff, 150, 100 );
 
 	// LIGHTS
 
@@ -127,8 +123,8 @@ function init() {
 		hex = colorhash;
 		pointLight.color.setHex( parseInt( colorhash, 16 ) );
 
-		font = reverseFontMap[ parseInt( fonthash ) ];
-		weight = reverseWeightMap[ parseInt( weighthash ) ];
+		font	= reverseFontMap[ parseInt( fonthash ) ];
+		weight	= reverseWeightMap[ parseInt( weighthash ) ];
 
 		postprocessing.enabled = parseInt( pphash );
 		bevelEnabled = parseInt( bevelhash );
@@ -161,7 +157,43 @@ function init() {
 	plane.rotation.x = - Math.PI / 2;
 	scene.add( plane );
 
-	// RENDERER
+	//				   //
+	// LOAD OBJ MODELS //
+	//				   //
+
+	var manager = new THREE.LoadingManager();
+	manager.onProgress = function ( item, loaded, total ) {
+		console.log( item, loaded, total );
+	};
+
+	// var texture = new THREE.Texture();
+	// var loader = new THREE.ImageLoader( manager );
+	// loader.load( 'textures/UV_Grid_Sm.jpg', function ( image ) {
+	// 	texture.image = image;
+	// 	texture.needsUpdate = true;
+
+	// } );
+	
+	var loader = new THREE.OBJLoader( manager );
+	loader.load( 'assets/models/chain.obj', function (object) {
+		object.traverse( function ( child ) {
+			if ( child instanceof THREE.Mesh ) {
+				// child.material.map = texture;
+			}
+		});
+		object.position.y = 190;
+		object.position.x = -25;
+		object.rotation.y = 600;
+		object.scale.x = 5;
+		object.scale.y = 5;
+		object.scale.z = 5;
+		console.log(object);
+		scene.add( object );
+	});
+
+	//			//
+	// RENDERER //
+	//			//
 
 	renderer = new THREE.WebGLRenderer( { antialias: true } );
 	renderer.setSize( window.innerWidth, window.innerHeight );
@@ -281,7 +313,6 @@ function init() {
 	//
 
 	window.addEventListener( 'resize', onWindowResize, false );
-
 }
 
 function onWindowResize() {
@@ -365,6 +396,9 @@ function onDocumentKeyPress( event ) {
 }
 
 function createText() {
+
+	TweetChain.clearSVGtext();
+	TweetChain.createSVGtext();
 
 	textGeo = new THREE.TextGeometry( text, {
 
@@ -463,12 +497,10 @@ function createText() {
 function refreshText() {
 
 	updatePermalink();
-
 	group.remove( textMesh1 );
 	if ( mirror ) group.remove( textMesh2 );
-
 	if ( !text ) return;
-
+	
 	createText();
 
 }
