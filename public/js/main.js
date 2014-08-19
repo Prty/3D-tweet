@@ -116,6 +116,16 @@ function update3dTweet (input) {
 					// text.attr({ text: 'my new text'});
 				});
 
+				$('.tweets-button').on('click', function (e) {
+					e.preventDefault();
+					TweetChain.selectCustomChainTab('tweets');
+				});
+
+				$('.materials-button').on('click', function (e) {
+					e.preventDefault();
+					TweetChain.selectCustomChainTab('materials');
+				});
+
 				// Init getSadTweets input form event handler
 				$('.get-sadtweets-button').on('click', function (e) {
 					e.preventDefault();
@@ -378,6 +388,22 @@ function update3dTweet (input) {
 
 				$.ajax(params);
 			}, // end of getSadTweets
+			selectCustomChainTab: function (tab) {
+				switch (tab) {
+					case 'tweets':
+						$('.materials-button').removeClass('selected');
+						$('.materials-wrapper').removeClass('selected');
+						$('.tweets-button').addClass('selected');
+						$('.tweets-wrapper').addClass('selected');
+						break;
+					case 'materials':
+						$('.tweets-button').removeClass('selected');
+						$('.tweets-wrapper').removeClass('selected');
+						$('.materials-button').addClass('selected');
+						$('.materials-wrapper').addClass('selected');
+						break;
+				}
+			},
 			clearSVGtext: function () {
 				console.log('clearSVGtext!');
 				// console.log(text);

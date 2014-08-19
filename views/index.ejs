@@ -22,7 +22,40 @@
 			</svg>
 		</section>
 
-		<section class="users-tweets-wrapper">
+		<section class="customize-chain-wrapper">
+			<div class="custom-chain-btn tweets-button selected"><span>Choose Tweet</span></div>
+			<div class="custom-chain-btn materials-button"><span>Choose Material</span></div>
+
+			<article class="custom-chain-tab tweets-wrapper selected">
+				<h3>Your most popular tweets</h3>
+				<div class="single-tweets-wrapper">
+					<!-- template will be injected here -->	
+					<div class="tweet">My cool tweet 1</div>
+					<div class="tweet">My cool tweet 2</div>
+					<div class="tweet">My cool tweet 3</div>
+					<div class="tweet">My cool tweet 4</div>
+					<div class="tweet">My cool tweet 5</div>
+				</div>
+			</article>
+
+			<article class="custom-chain-tab materials-wrapper">
+				<h3>Materials for your Tweet Chain</h3>
+				<div class="single-materials-wrapper">
+					<div class="material">Material 1</div>
+					<div class="material">Material 2</div>
+					<div class="material">Material 3</div>
+					<div class="material">Material 4</div>
+					<div class="material">Material 5</div>
+				</div>
+			</article>
+		</section>
+
+		<div class="checkout-wrapper">
+			<div class="price">$75</div>
+			<div class="buy-button"> BUY</div>
+		</div>
+
+		<section >
 			
 		</section>
 
@@ -34,7 +67,9 @@
 			</ul>
 		</section>
 
-
+		<!--		   -->
+		<!--  EDIT UI  -->
+		<!-- 		   -->
 
 		<div id="info-index">
 		<!-- <a href="http://threejs.org" target="_blank">three.js</a> - procedural 3D text by <a href="http://www.lab4games.net/zz85/blog" target="_blank">zz85</a> &amp; alteredq
@@ -48,6 +83,38 @@
 			<span class="button" id="postprocessing">change postprocessing</span>,
 			<a id="permalink" href="#">permalink</a>
 		</div>
+
+		<!--		   -->
+		<!-- TEMPLATES -->
+		<!--		   -->
+
+		<!-- Tweet Template -->
+		<script id="tweets-template" type="text/x-handlebats-template">
+			<div class="tweet">
+				<div class="tweet-id">{{id}}</div>  
+				<div class="title">{{relative_created_at}} without RT or Favorite... </div>    
+				<div class="frame">
+					<div class="profile"> 
+						<div class="profilepic">
+							<img class="profilepic" src="{{profile_image}}"/>
+						</div>
+						<div class="name">{{username}}</div>
+						<div class="handle">@{{screenname}}</div>
+					</div> <!-- profile -->
+
+					<div class="tweettext">{{text}}</div>
+					<div class="line"></div>
+
+					<div class="tweetbottom">
+						<div class="fav sub">Favorite {{favorite_count}}</div>
+						<div class="rt sub">Retweet {{retweet_count}}</div>
+					</div> <!-- tweetbottom -->
+
+					<div class="line2"></div>
+					<div class="date">{{format_created_at}}
+				</div>
+			</div>
+		</script>
 
 		<!--			-->
 		<!--	LIBS 	-->
