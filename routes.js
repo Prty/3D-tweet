@@ -6,7 +6,7 @@ var AuthController 		= require('./controllers/index').AuthController;
 
 module.exports = function(app, passport) {
 	app.get('/',						isLoggedIn,	RootController.index);
-	app.get('/search',								RootController.search);
+	app.get('/search',					isLoggedIn,	RootController.search);
 	app.get('/:username',				isLoggedIn,	RootController.show);
 	app.get('/tweets/:username',		isLoggedIn, TweetsController.show);
 	app.get('/auth/twitter',						passport.authenticate('twitter',	{ scope : 'email' }));

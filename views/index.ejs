@@ -7,19 +7,41 @@
 		<link rel="stylesheet" href="css/main.css"/>
 	</head>
 	<body>
-		<section>
+		<!-- <section>
 			<button class="create-tweet">Random Tweet</button>
 			<button class="get-tweets">Auth & Get Tweets</button>
 			<button class="post-tweet">Post Tweet</button>
+			<button class="update-svg">Update SVG</button>
+		</section> -->
+
+		<!-- SVG -->
+		<section class="svg">
+			<svg class="main-text-svg" height="100" width="300">
+				<text x="0" y="15" fill="red">Tweet Chain</text>
+				Sorry, your browser does not support inline SVG.
+			</svg>
 		</section>
 
-		<div class="ejs-context"><%= username %></div>
+		<section class="users-tweets-wrapper">
+			
+		</section>
 
-		<div id="info">
+		<section class="bottom-ui">
+			<ul>
+				<li>Gallery</li>
+				<li>About</li>
+				<li>Contact</li>
+			</ul>
+		</section>
+
+
+
+		<div id="info-index">
 		<!-- <a href="http://threejs.org" target="_blank">three.js</a> - procedural 3D text by <a href="http://www.lab4games.net/zz85/blog" target="_blank">zz85</a> &amp; alteredq
 		(fonts from <a href="http://typeface.neocracy.org/">typeface.js</a> and <a href="http://en.wikipedia.org/wiki/Droid_%28font%29">Droid</a>)
 		<br/>type to enter new text, drag to spin the text -->
-		<br/><span class="button" id="color">change color</span>,
+		<br/>
+			<span class="button" id="color">change color</span>,
 			<span class="button" id="font">change font</span>,
 			<span class="button" id="weight">change weight</span>,
 			<span class="button" id="bevel">change bevel</span>,
@@ -36,6 +58,7 @@
 		<script type="text/javascript" src="js/libs/jquery-2.1.1.min.js"></script>
 		<script type="text/javascript" src="js/libs/handlebars.js"></script>
 		<script type="text/javascript" src="js/libs/jquery.transit.min.js"></script>
+		<script type="text/javascript" src="js/libs/OBJLoader.js"></script>
 
 		<script src="js/shaders/ConvolutionShader.js"></script>
 		<script src="js/shaders/CopyShader.js"></script>
@@ -69,11 +92,10 @@
 		<!-- APP -->
 		<!-- 	 -->
 
-		<script type="text/javascript" src="js/3d_text.js"></script>
 		<script type="text/javascript" src="js/main.js"></script>
+		<script type="text/javascript" src="js/3d_text.js"></script>
 		<script type="text/javascript">
-			window.physicalTweets.init();
+			window.TweetChain.init();
 		</script>
 	</body>
 </html>
-

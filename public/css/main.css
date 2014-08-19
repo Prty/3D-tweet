@@ -43,3 +43,75 @@ body, html {
 .svg .main-svg-text {
 	text-align: center;
 }
+
+/* 			 */
+/* MIDDLE UI */
+/* 			 */
+
+.middle-ui {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	top: 100px;
+	z-index: 10;
+	/*background: red;*/
+}
+	.middle-ui h2 {
+		display: none;
+		text-align: center;
+		width: 250px;
+		font-size: 2em;
+		border: 1px solid black;
+		padding: 15px 50px;
+		background: rgba(100, 100, 100, 0.5);
+	}
+	.middle-ui h2:hover {
+		cursor: pointer;
+		background: rgba(100, 100, 100, 1);
+	}
+
+/* 			 */
+/* BOTTOM UI */
+/* 			 */
+
+
+.bottom-ui {
+	display: flex;
+	align-items: center;
+	width: 100%;
+	height: 200px;
+	position: absolute;
+	bottom: 0;
+	z-index: 10;
+	/*background: red;*/
+}
+.bottom-ui ul {
+	width: 100%;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	/*background: yellow;*/
+	margin: 0;
+	padding: 0;
+}
+.bottom-ui ul li {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 150px;
+	border: 1px solid black;
+	height: 50px;
+	list-style-type: none;
+	text-align: center;
+	background: rgba(100, 100, 100, 0.5);
+	margin: 0;
+	padding: 0;
+}
+.bottom-ui ul li:hover {
+	cursor: pointer;
+	background: rgba(100, 100, 100, 1);
+}
+

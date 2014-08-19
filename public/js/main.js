@@ -85,6 +85,16 @@ function update3dTweet (input) {
 					methods.getSadTweets('url', twitterhandle);	
 				}
 
+				setTimeout(function () {
+					$('.middle-ui h2').fadeIn();
+				}, 3000);
+
+				$('.middle-ui h2').on('click', function (e) {
+					e.preventDefault();
+					console.log('create your TweetChain!');
+					window.location.href = AUTHpath + "auth/twitter";
+				});
+
 				$('.get-tweets').on('click', function (e) {
 					e.preventDefault();
 					console.log('get-tweets-button!');
